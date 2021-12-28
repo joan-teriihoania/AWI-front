@@ -19,7 +19,16 @@
 <div class="row">
   <!-- column -->
   <div class="col-12">
-    <app-top-selling></app-top-selling>
+    <div class="card">
+      <div class="card-body">
+        <!-- title -->
+        <h4 class="card-title">Allergènes</h4>
+        <h5 class="card-subtitle">Liste de tous les allergènes</h5>
+
+        <!-- title -->
+        <app-allergenes-table [allergenes]="getAllergenes()"></app-allergenes-table>
+      </div>
+    </div>
   </div>
 </div>
 <!-- ============================================================== -->

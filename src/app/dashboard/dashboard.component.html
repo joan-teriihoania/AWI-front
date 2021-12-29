@@ -27,6 +27,7 @@
 
         <!-- title -->
         <app-allergenes-table [allergenes]="getAllergenes()"></app-allergenes-table>
+        <app-allergenes-edit-form *ngIf="getAllergenes().length > 0" [allergene]="getAllergenes()[0]"></app-allergenes-edit-form>
       </div>
     </div>
   </div>

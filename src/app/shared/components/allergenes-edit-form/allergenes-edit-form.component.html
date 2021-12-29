@@ -1,0 +1,20 @@
+<form>
+  <div class="form-group">
+    <label for="name">Nom</label>
+    <input type="text" class="form-control" id="name" name="name" required minlength="4" [(ngModel)]="allergene.name" #name="ngModel">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+         class="alert">
+
+      <small class="form-text text-muted text-danger" *ngIf="name.errors?.['required']">
+        Vous devez spécifier un nom pour l'allergène
+      </small>
+      <small class="form-text text-muted text-danger" *ngIf="name.errors?.['minlength']">
+        Le nom d'un allergène doit faire plus de 4 caractères
+      </small>
+      <small class="form-text text-muted text-danger" *ngIf="name.errors?.['api']">
+        {{name.errors.api}}
+      </small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!allergeneForm.valid" [formGroup]="allergeneForm" (ngSubmit)="onSubmit()">Enregistrer</button>
+</form>

@@ -1,0 +1,25 @@
+
+<!-- title -->
+<div class="table-responsive">
+  <table class="table align-middle" *ngIf="allergenes.length > 0; else noAllergenes">
+    <thead>
+    <tr>
+      <th class="text-dark font-medium fs-4">#</th>
+      <th class="text-dark font-medium fs-4">Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor='let allergene of allergenes'>
+      <td>
+        <h5 class="mb-0 fw-normal">{{allergene.allergene_id}}</h5>
+      </td>
+      <td>
+        <h5 class="mb-0 fw-normal">{{allergene.name}}</h5>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noAllergenes>
+  <div class="w-100 text-center">Il n'y a pas d'allergène</div>
+</ng-template>

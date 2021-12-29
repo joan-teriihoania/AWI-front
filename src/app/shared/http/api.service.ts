@@ -23,4 +23,8 @@ export class ApiService {
   delete<T>(path: string, body: {[key: string]: any}){
     return this.http.delete<T>(`${this.apiURL}${path}`, body).toPromise()
   }
+
+  put<T>(path: string, body: {[key: string]: any}){
+    return this.http.put<T>(`${this.apiURL}${path}`, body).toPromise()
+  }
 }

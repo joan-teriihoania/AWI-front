@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Allergene} from "../../classes/allergene";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AllergenesService} from "../../dao/allergenes.service";
+import {NotificationService} from "../../../toastr/notification.service";
 
 @Component({
   selector: 'app-allergenes-edit-form',
@@ -11,7 +13,10 @@ export class AllergenesEditFormComponent implements OnInit {
   @Input() allergene: Allergene = new Allergene(-1, "")
   allergeneForm: FormGroup = new FormGroup({});
 
-  constructor() {}
+  constructor(
+    private notificationService: NotificationService,
+    private allergeneService: AllergenesService
+  ) {}
 
   ngOnInit(): void {
     this.allergeneForm = new FormGroup({
@@ -23,9 +28,13 @@ export class AllergenesEditFormComponent implements OnInit {
   }
 
   onSubmit(){
-    const newAllergene = this.allergeneForm.value
-    this.allergene.name = newAllergene.name
-    // TODO save allergene using DAO service
+    const allergeneFormValue = this.allergeneForm.value
+    this.allergene.name = allergeneFormValue.name
+    this.allergeneService.post(this.allergene).then(() => {
+      this.notificationService.showSuccess("", "Allergène modifié")
+    }).catch((err) => {
+      this.notificationService.showSuccess(err, "Erreur rencontrée")
+    })
   }
 
   getName(){return this.allergeneForm.get('name')}

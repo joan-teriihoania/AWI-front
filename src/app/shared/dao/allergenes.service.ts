@@ -26,8 +26,8 @@ export class AllergenesService {
   }
 
   // Considered not created if ID is -1
-  post(allergene: Allergene, createdIfNotExists = true){
-    if(createdIfNotExists && allergene.allergene_id === -1){
+  post(allergene: Allergene, createIfNotExists = true){
+    if(createIfNotExists && allergene.allergene_id === -1){
       // if created, sets returned object as the given one to update its id
       return new Promise((resolve, reject) => {
         this.put(allergene).then((allergene_) => {

@@ -19,11 +19,11 @@ import {IngredientCategory} from "../classes/ingredientcategory";
     }
   
     getAll(){
-      return this.apiService.get<IngredientCategory[]>("/ingredients", {})
+      return this.apiService.get<IngredientCategory[]>("/ingredient_categories", {})
     }
   
     post(ingredient_category: IngredientCategory){
-      return this.apiService.put<IngredientCategory>("/ingredients", {name: ingredient_category.name})
+      return this.apiService.put<IngredientCategory>("/ingredient_categories", {name: ingredient_category.name})
     }
   
     // Considered not created if ID is -1
@@ -37,13 +37,13 @@ import {IngredientCategory} from "../classes/ingredientcategory";
           }).catch(reject)
         })
       } else {
-        return this.apiService.put<IngredientCategory>("/ingredients/" + ingredient_category.ingredient_category_id, {
+        return this.apiService.put<IngredientCategory>("/ingredient_categories/" + ingredient_category.ingredient_category_id, {
           name: ingredient_category.name
         })
       }
     }
   
     delete(ingredient_category: IngredientCategory){
-      return this.apiService.delete<any>("/ingredients/" + ingredient_category.ingredient_category_id, {})
+      return this.apiService.delete<any>("/ingredient_categories/" + ingredient_category.ingredient_category_id, {})
     }
   }

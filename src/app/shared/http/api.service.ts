@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiURL: string = "http://localhost:8080/api/v1"
+  private apiURL: string = "http://api.cuisinedu.cluster-ig4.igpolytech.fr/api/v1"
   constructor(private http: HttpClient) { }
 
   get<T>(path: string, body: {[key: string]: string;}){

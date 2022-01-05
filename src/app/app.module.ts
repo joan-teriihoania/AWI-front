@@ -26,6 +26,7 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {ApiInterceptor} from "./shared/http/api.interceptor";
 import {ToastrModule} from "ngx-toastr";
+import {DataTablesModule} from "angular-datatables";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -47,12 +48,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule,
+      ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot(Approutes, {useHash: false, relativeLinkResolution: 'legacy'}),
     PerfectScrollbarModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    DataTablesModule
   ],
   providers: [
     {

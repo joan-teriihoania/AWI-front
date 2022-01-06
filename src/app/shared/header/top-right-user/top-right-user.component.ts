@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {LoginService} from "../../session/login.service";
 import {User} from "../../classes/user";
 
@@ -13,8 +13,7 @@ export class TopRightUserComponent implements OnInit {
   constructor(
     private loginService: LoginService
   ) {
-    loginService.isLoggedIn().then((data: any) => {
-      console.log(data)
+    this.loginService.isLoggedInObservable().subscribe((data: any) => {
       this.user = new User(
         data.user_id,
         data.username,
@@ -25,12 +24,17 @@ export class TopRightUserComponent implements OnInit {
         data.blocked,
         data.blockedReason
       );
-    }).catch(() => {
-
+    }, (err) => {
+      this.user = null
     })
   }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.loginService.logout()
+    window.location.reload()
   }
 
 }

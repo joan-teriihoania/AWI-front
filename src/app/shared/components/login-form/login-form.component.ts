@@ -10,10 +10,17 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class LoginFormComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({})
   errorMessage: string = ""
+  isLogged: boolean = false
 
   constructor(
     private loginService: LoginService
-  ) { }
+  ) {
+    loginService.isLoggedIn().then(() => {
+      this.isLogged = true
+    }).catch(() => {
+      this.isLogged = false
+    })
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -29,7 +36,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(){
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).then(() => {
-
+      window.location.reload()
     }).catch((err: string) => {
       this.errorMessage = err
     })

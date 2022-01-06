@@ -27,6 +27,9 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {ApiInterceptor} from "./shared/http/api.interceptor";
 import {ToastrModule} from "ngx-toastr";
 import {DataTablesModule} from "angular-datatables";
+import { TopRightUserComponent } from './shared/header/top-right-user/top-right-user.component';
+import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pagenotfound.component";
+import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -41,14 +44,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SpinnerComponent,
     FullComponent,
     NavigationComponent,
-    SidebarComponent
+    SidebarComponent,
+    TopRightUserComponent,
+    PagenotfoundComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-      ReactiveFormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot(Approutes, {useHash: false, relativeLinkResolution: 'legacy'}),

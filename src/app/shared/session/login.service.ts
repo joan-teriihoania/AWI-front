@@ -23,12 +23,27 @@ export class LoginService {
     this.localStorageService.set("SessionToken", newValue)
   }
 
+  public login(email: string, password: string){
+    return new Promise((resolve, reject) => {
+      this.apiService.put("/account/login", {
+        email,
+        password
+      }).then((data: any) => {
+        this.setSessionToken(data.session_token)
+        resolve(data)
+      }).catch((err: HttpErrorResponse) => {
+        console.log(err)
+        reject(err.message)
+      })
+    })
+  }
+
   public isLoggedIn(){
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.apiService.get("/account", {}).then((data) => {
-        resolve(true)
+        resolve(data)
       }).catch(() => {
-        resolve(false)
+        reject()
       })
     })
   }

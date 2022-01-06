@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Allergene} from "../../classes/allergene";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AllergenesService} from "../../dao/allergenes.service";
-import {NotificationService} from "../../../toastr/notification.service";
+import {NotificationService} from "../../toastr/notification.service";
 
 @Component({
   selector: 'app-allergenes-edit-form',

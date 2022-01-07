@@ -1,0 +1,19 @@
+<form [formGroup]="allergeneForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col"><label for="name">Nom</label></div>
+    <div class="col">
+      <input type="text" class="form-control" id="name" name="name" required minlength="4" formControlName="name">
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary mb-2" [disabled]="!allergeneForm.valid">Enregistrer</button>
+    </div>
+  </div>
+  <div *ngIf="!allergeneForm.valid" class="row">
+    <div class="col text-center">
+      <small class="text-danger">
+        <div *ngIf="allergeneForm.get('name').hasError('required')">Veuillez spécifier un nom d'allergène</div>
+        <div *ngIf="allergeneForm.get('name').hasError('minlength')">Le nom d'un allergène doit faire 4 caractères au minimum</div>
+      </small>
+    </div>
+  </div>
+</form>

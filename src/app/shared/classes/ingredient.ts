@@ -4,13 +4,21 @@ import {Allergene} from "./allergene";
 
 export class Ingredient {
   constructor(
-    private ingredient_id: number,
-    private name: string,
+    private _ingredient_id: number,
+    private _name: string,
     private price: number,
     private unit: Unit,
     private category: IngredientCategory,
     private allergenes: Allergene[]
   ) {
+  }
+
+  get ingredient_id(): number {
+    return this._ingredient_id;
+  }
+
+  get name(): string {
+    return this._name;
   }
 
   public toString(){

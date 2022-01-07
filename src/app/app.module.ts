@@ -30,6 +30,7 @@ import {DataTablesModule} from "angular-datatables";
 import { TopRightUserComponent } from './shared/header/top-right-user/top-right-user.component';
 import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pagenotfound.component";
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
+import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -47,7 +48,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SidebarComponent,
     TopRightUserComponent,
     PagenotfoundComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,

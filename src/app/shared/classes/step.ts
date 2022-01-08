@@ -1,30 +1,39 @@
 
 import {Ingredient} from "./ingredient";
+import {StepComponent} from "./stepcomponent";
 
 export class Step {
   constructor(
-    private step_id: number,
-    private name: string,
-    private description: string,
-    private duration: number
+    private _step_id: number,
+    private _name: string,
+    private _description: string,
+    private _duration: number,
+    private _components: StepComponent[]
   ) {
   }
 
   public toString(){
-    return this.name;
+    return this._name;
   }
 
-  getDescription(): string {
-    return this.description;
+
+  get step_id(): number {
+    return this._step_id;
   }
 
-  getDuration(): number {
-    return this.duration;
+  get name(): string {
+    return this._name;
   }
 
-  
+  get description(): string {
+    return this._description;
+  }
 
-  getName(): string {
-    return this.name;
+  get duration(): number {
+    return this._duration;
+  }
+
+  get components(): StepComponent[] {
+    return this._components;
   }
 }

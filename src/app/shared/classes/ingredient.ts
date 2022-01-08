@@ -21,6 +21,12 @@ export class Ingredient {
     return this._name;
   }
 
+  getAllergenes(){
+    for (const allergene in this.allergenes){
+      
+    }
+  }
+
   public toString(){
     return this.name;
   }

@@ -1,6 +1,8 @@
 import { Component, AfterViewInit } from '@angular/core';
 import {Allergene} from "../shared/classes/allergene";
 import {AllergenesService} from "../shared/dao/allergenes.service";
+import {Ingredient} from "../shared/classes/ingredient";
+import {IngredientsService} from "../shared/dao/ingredients.service";
 //declare var require: any;
 
 @Component({
@@ -9,16 +11,25 @@ import {AllergenesService} from "../shared/dao/allergenes.service";
 export class DashboardComponent implements AfterViewInit {
   subtitle: string;
   allergenes: Allergene[] = []
-  constructor(allergeneService: AllergenesService) {
+  ingredients: Ingredient[] = []
+  constructor(allergeneService: AllergenesService, ingredientService: IngredientsService) {
     this.subtitle = 'This is some text within a card block.';
     allergeneService.getAll().then((allergenes) => {
       console.log(allergenes)
       this.allergenes = allergenes
     }).catch(console.error)
+    ingredientService.getAll().then((ingredients) => {
+      console.log(ingredients)
+      this.ingredients = ingredients
+    }).catch(console.error)
   }
 
   getAllergenes(){
     return this.allergenes
+  }
+
+  getIngredients(){
+    return this.ingredients
   }
 
   ngAfterViewInit() { }

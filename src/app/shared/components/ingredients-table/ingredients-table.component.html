@@ -1,0 +1,35 @@
+
+<!-- title -->
+<div class="table-responsive">
+    <table class="table align-middle" *ngIf="ingredients.length > 0; else noIngredients">
+      <thead>
+      <tr>
+        <th class="text-dark font-medium fs-4">#</th>
+        <th class="text-dark font-medium fs-4">Nom</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let ingredient of ingredients'>
+        <td>
+          <h5 class="mb-0 fw-normal">{{ingredient.ingredient_id}}</h5>
+        </td>
+        <td>
+          <h5 class="mb-0 fw-normal">{{ingredient.name}}</h5>
+        </td>
+        <td>
+            <h5 class="mb-0 fw-normal">{{ingredient.price}}</h5>
+        </td>
+        <td>
+            <h5 class="mb-0 fw-normal">{{ingredient.unit.name}}</h5>
+        </td>
+        <td>
+            <h5 class="mb-0 fw-normal">{{ingredient.category.name}}</h5>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noIngredients>
+    <div class="w-100 text-center">Il n'y a pas d'ingredient</div>
+  </ng-template>
+  

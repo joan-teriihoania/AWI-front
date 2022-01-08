@@ -26,6 +26,7 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {ApiInterceptor} from "./shared/http/api.interceptor";
 import {ToastrModule} from "ngx-toastr";
+import { IngredientsTableComponent } from './shared/components/ingredients-table/ingredients-table.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,

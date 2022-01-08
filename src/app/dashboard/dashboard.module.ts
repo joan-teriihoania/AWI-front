@@ -10,6 +10,7 @@ import { TopSellingComponent } from "./dashboard-components/top-selling/top-sell
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards.component";
 import { AllergenesTableComponent } from '../shared/components/allergenes-table/allergenes-table.component';
+import { IngredientsTableComponent } from '../shared/components/ingredients-table/ingredients-table.component';
 import { AllergenesEditFormComponent } from "../shared/components/allergenes-edit-form/allergenes-edit-form.component";
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
     TopCardsComponent,
     BlogCardsComponent,
     AllergenesTableComponent,
-    AllergenesEditFormComponent
+    AllergenesEditFormComponent,
+    IngredientsTableComponent
   ],
 })
 export class DashboardModule {}

@@ -1,0 +1,28 @@
+<ng-template [ngIf]="user != null">
+  <a
+    ngbDropdownToggle
+    class="nav-link waves-effect waves-dark pro-pic"
+    href="javascript:void(0)"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <img
+      [src]="user.imgProfile"
+      alt="user"
+      class="rounded-circle"
+      width="31"
+    />
+    <span class="ml-2 text-black-50">{{user.username}}</span>
+  </a>
+  <div class="dropdown-menu-right" ngbDropdownMenu>
+    <a class="dropdown-item" href="javascript:void(0)"> Profil</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="javascript:void(0)"> Paramètres</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" (click)="logout()"> Se déconnecter</a>
+  </div>
+</ng-template>
+<ng-template [ngIf]="user == null">
+  <a class="btn btn-primary" href="/account/login">Se connecter</a>
+</ng-template>

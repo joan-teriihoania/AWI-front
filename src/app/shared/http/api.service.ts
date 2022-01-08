@@ -5,26 +5,42 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiURL: string = "http://localhost:8080/api/v1"
+  private apiURL: string = "https://api.cuisinedu.cluster-ig4.igpolytech.fr/api/v1"
   constructor(private http: HttpClient) { }
 
   get<T>(path: string, body: {[key: string]: string;}){
+    return this.getObservable<T>(path, body).toPromise()
+  }
+
+  getObservable<T>(path: string, body: {[key: string]: string}){
     return this.http.get<T>(`${this.apiURL}${path}${path.includes("?") ? "&" : "?"}${
       Object.keys(body).map((b) => {
         return `${b}=${encodeURIComponent(body[b])}`
       }).join("&")
-    }`).toPromise()
+    }`)
   }
 
   post<T>(path: string, body: {[key: string]: any}){
-    return this.http.post<T>(`${this.apiURL}${path}`, body).toPromise()
+    return this.postObservable<T>(path, body).toPromise()
+  }
+
+  postObservable<T>(path: string, body: {[key: string]: any}){
+    return this.http.post<T>(`${this.apiURL}${path}`, body)
   }
 
   delete<T>(path: string, body: {[key: string]: any}){
-    return this.http.delete<T>(`${this.apiURL}${path}`, body).toPromise()
+    return this.deleteObservable<T>(path, body).toPromise()
+  }
+
+  deleteObservable<T>(path: string, body: {[key: string]: any}){
+    return this.http.delete<T>(`${this.apiURL}${path}`, body)
   }
 
   put<T>(path: string, body: {[key: string]: any}){
-    return this.http.put<T>(`${this.apiURL}${path}`, body).toPromise()
+    return this.putObservable<T>(path, body).toPromise()
+  }
+
+  putObservable<T>(path: string, body: {[key: string]: any}){
+    return this.http.put<T>(`${this.apiURL}${path}`, body)
   }
 }

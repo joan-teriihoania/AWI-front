@@ -1,7 +1,6 @@
-
 <!-- title -->
 <div class="table-responsive">
-  <table class="table align-middle" *ngIf="allergenes.length > 0; else noAllergenes">
+  <table datatable class="table align-middle" *ngIf="allergenes.length > 0; else noAllergenes">
     <thead>
     <tr>
       <th class="text-dark font-medium fs-4">#</th>
@@ -11,10 +10,10 @@
     <tbody>
     <tr *ngFor='let allergene of allergenes'>
       <td>
-        <h5 class="mb-0 fw-normal">{{allergene.allergene_id}}</h5>
+        <p class="mb-0 fw-normal">{{allergene.allergene_id}}</p>
       </td>
       <td>
-        <h5 class="mb-0 fw-normal">{{allergene.name}}</h5>
+        <p class="mb-0 fw-normal">{{allergene.name}}</p>
       </td>
     </tr>
     </tbody>

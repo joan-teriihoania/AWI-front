@@ -25,6 +25,9 @@
         <td>
             <h5 class="mb-0 fw-normal">{{ingredient.category.name}}</h5>
         </td>
+        <td>
+            <h5 class="mb-0 fw-normal" *ngFor='let al of ingredient.getAllergenes()'>{{al.name}}<br></h5>
+        </td>
       </tr>
       </tbody>
     </table>

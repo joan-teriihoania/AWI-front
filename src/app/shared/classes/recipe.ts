@@ -3,7 +3,7 @@ import {Step} from "./step";
 import {StepComponent} from "./stepcomponent";
 import {Ingredient} from "./ingredient";
 
-export class Recipe implements StepComponent {
+export class Recipe  {
   constructor(
     private recipe_id: number,
     private name: string,
@@ -23,17 +23,6 @@ export class Recipe implements StepComponent {
 
   getDuration(): number {
     return 0;
-  }
-
-  getIngredients(): Ingredient[] {
-    const allIngredients: Ingredient[] = []
-    for (let i = 0; i < this.steps.length;i++) {
-      const step = this.steps[i]
-      for (const ingredient of step.getIngredients()) {
-        allIngredients.push(ingredient)
-      }
-    }
-    return allIngredients
   }
 
   getName(): string {

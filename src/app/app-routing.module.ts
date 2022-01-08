@@ -5,6 +5,7 @@ import { FullComponent } from './layouts/full/full.component';
 import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pagenotfound.component";
 import {LoginFormComponent} from "./shared/components/login-form/login-form.component";
 import {RegisterFormComponent} from "./shared/components/register-form/register-form.component";
+import {AccountActivationComponent} from "./shared/components/account-activation/account-activation.component";
 
 export const Approutes: Routes = [
   {
@@ -31,6 +32,10 @@ export const Approutes: Routes = [
       {
         path: 'account/register',
         component: RegisterFormComponent
+      },
+      {
+        path: 'account/activate/:id',
+        component: AccountActivationComponent
       },
       {
         path: '**',

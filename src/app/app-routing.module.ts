@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pagenotfound.component";
 import {LoginFormComponent} from "./shared/components/login-form/login-form.component";
+import {RegisterFormComponent} from "./shared/components/register-form/register-form.component";
 
 export const Approutes: Routes = [
   {
@@ -26,6 +27,10 @@ export const Approutes: Routes = [
       {
         path: 'account/login',
         component: LoginFormComponent
+      },
+      {
+        path: 'account/register',
+        component: RegisterFormComponent
       },
       {
         path: '**',

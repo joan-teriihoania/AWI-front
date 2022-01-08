@@ -31,6 +31,7 @@ import { TopRightUserComponent } from './shared/header/top-right-user/top-right-
 import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pagenotfound.component";
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -62,7 +63,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RouterModule.forRoot(Approutes, {useHash: false, relativeLinkResolution: 'legacy'}),
     PerfectScrollbarModule,
     ToastrModule.forRoot(),
-    DataTablesModule
+    DataTablesModule,
+    SweetAlert2Module
   ],
   providers: [
     {

@@ -33,7 +33,21 @@ export class LoginService {
         this.setSessionToken(data.session_token)
         resolve(data)
       }).catch((err: HttpErrorResponse) => {
-        console.log(err)
+        reject(err.error)
+      })
+    })
+  }
+
+  public register(username: string, email: string, password: string){
+    return new Promise((resolve, reject) => {
+      this.apiService.put("/account/register", {
+        username,
+        email,
+        password
+      }).then((data: any) => {
+        console.log(data)
+        resolve(data)
+      }).catch((err: HttpErrorResponse) => {
         reject(err.error)
       })
     })

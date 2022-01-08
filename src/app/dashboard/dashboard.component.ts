@@ -3,6 +3,8 @@ import {Allergene} from "../shared/classes/allergene";
 import {AllergenesService} from "../shared/dao/allergenes.service";
 import {Ingredient} from "../shared/classes/ingredient";
 import {IngredientsService} from "../shared/dao/ingredients.service";
+import {IngredientCategory} from "../shared/classes/ingredientcategory";
+import {IngredientCategoriesService} from "../shared/dao/ingredientCategories.service";
 //declare var require: any;
 
 @Component({
@@ -12,7 +14,8 @@ export class DashboardComponent implements AfterViewInit {
   subtitle: string;
   allergenes: Allergene[] = []
   ingredients: Ingredient[] = []
-  constructor(allergeneService: AllergenesService, ingredientService: IngredientsService) {
+  ingredientscategory: IngredientCategory[] = []
+  constructor(allergeneService: AllergenesService, ingredientService: IngredientsService, ingredientCategoryService: IngredientCategoriesService) {
     this.subtitle = 'This is some text within a card block.';
     allergeneService.getAll().then((allergenes) => {
       console.log(allergenes)
@@ -22,6 +25,10 @@ export class DashboardComponent implements AfterViewInit {
       console.log(ingredients)
       this.ingredients = ingredients
     }).catch(console.error)
+    ingredientCategoryService.getAll().then((ingredientscategory) => {
+      console.log(ingredientscategory)
+      this.ingredientscategory = ingredientscategory
+    }).catch(console.error)
   }
 
   getAllergenes(){
@@ -30,6 +37,10 @@ export class DashboardComponent implements AfterViewInit {
 
   getIngredients(){
     return this.ingredients
+  }
+
+  getIngredientsCategory(){
+    return this.ingredientscategory
   }
 
   ngAfterViewInit() { }

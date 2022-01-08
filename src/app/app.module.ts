@@ -33,6 +33,7 @@ import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pag
 import { LoginFormComponent } from './shared/components/login-form/login-form.component';
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import { IngredientsCategoryTableComponent } from './shared/components/ingredients-category-table/ingredients-category-table.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -51,7 +52,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TopRightUserComponent,
     PagenotfoundComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    
   ],
   imports: [
     CommonModule,

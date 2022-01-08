@@ -10,8 +10,6 @@ import {User} from "../classes/user";
   providedIn: 'root'
 })
 export class LoginService {
-  loginStateChange: Subject<boolean> = new Subject<boolean>()
-
   constructor(
     private localStorageService: LocalStorageService,
     private apiService: ApiService
@@ -33,10 +31,23 @@ export class LoginService {
         password
       }).then((data: any) => {
         this.setSessionToken(data.session_token)
-        this.loginStateChange.next(true)
         resolve(data)
       }).catch((err: HttpErrorResponse) => {
-        console.log(err)
+        reject(err.error)
+      })
+    })
+  }
+
+  public register(username: string, email: string, password: string){
+    return new Promise((resolve, reject) => {
+      this.apiService.put("/account/register", {
+        username,
+        email,
+        password
+      }).then((data: any) => {
+        console.log(data)
+        resolve(data)
+      }).catch((err: HttpErrorResponse) => {
         reject(err.error)
       })
     })
@@ -44,19 +55,10 @@ export class LoginService {
 
   logout(){
     this.setSessionToken("")
-    this.loginStateChange.next(false)
   }
 
   public isLoggedIn(){
-    return new Promise((resolve, reject) => {
-      this.isLoggedInObservable().toPromise().then((data) => {
-        this.loginStateChange.next(true)
-        resolve(data)
-      }).catch(() => {
-        this.loginStateChange.next(false)
-        reject()
-      })
-    })
+    return this.isLoggedInObservable().toPromise()
   }
 
   public isLoggedInObservable(){

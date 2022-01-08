@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10">
+    <div class="wrap justify-content-center">
+      <div class="img" style="background-image:url(assets/images/bg/bg1.jpg)">
+      </div>
+      <div *ngIf="!isLogged"  class="login-wrap p-4 p-md-5">
+        <div class="d-flex">
+          <div class="w-100">
+            <h3 class="mb-4 text-center">Inscription</h3>
+          </div>
+        </div>
+        <form [formGroup]="registerForm" class="signup-form" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3 row">
+            <label class="label col-2" for="username">Nom d'utilisateur</label>
+            <div class="col">
+              <input type="email" class="form-control w-100" id="username" formControlName="username" placeholder="Nom d'utilisateur" required>
+              <div *ngIf="!registerForm.valid" class="row">
+                <div class="col">
+                  <small class="text-danger">
+                    <div *ngIf="registerForm.get('username').hasError('required')">Veuillez spécifier un nom d'utilisateur</div>
+                    <div *ngIf="registerForm.get('username').hasError('minLength')">Le nom d'utilisateur doit faire plus de 4 caractères</div>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-3 row">
+            <label class="label col-2" for="email">Email</label>
+            <div class="col">
+              <input type="email" class="form-control w-100" id="email" formControlName="email" placeholder="Adresse mail" required>
+              <div *ngIf="!registerForm.valid" class="row">
+                <div class="col">
+                  <small class="text-danger">
+                    <div *ngIf="registerForm.get('email').hasError('required')">Veuillez spécifier une adresse mail</div>
+                    <div *ngIf="registerForm.get('email').hasError('email')">Veuillez spécifier une adresse mail valide</div>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row mb-3">
+            <label class="label col-2" for="password">Mot de passe</label>
+            <div class="col">
+              <input type="password" class="form-control w-100" id="password" formControlName="password" placeholder="Mot de passe" required>
+              <div *ngIf="!registerForm.valid" class="row">
+                <div class="col">
+                  <small class="text-danger">
+                    <div *ngIf="registerForm.get('password').hasError('required')">Veuillez spécifier un mot de passe</div>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" [disabled]="!registerForm.valid" class="form-control btn btn-primary rounded submit px-3">S'inscrire</button>
+            <div *ngIf="errorMessage != ''" class="row">
+              <div class="col text-center">
+                <small class="text-danger">
+                  {{errorMessage}}
+                </small>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="mt-3">
+          <p class="text-center m-0"><a data-toggle="tab" href="/account/reset">Mot de passe oublié</a></p>
+          <p class="text-center m-0"><a data-toggle="tab" href="/account/login">Se connecter</a></p>
+        </div>
+      </div>
+      <div *ngIf="isLogged">
+        <p class="text-info text-center">Vous êtes déjà connecté</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,12 +5,15 @@ import {Ingredient} from "./ingredient";
 
 export class Recipe  {
   constructor(
-    private recipe_id: number,
+    private _recipe_id: number,
     private name: string,
     private nb_couvert: number,
     private user: User,
     private steps: Step[]
   ) {
+  }
+  get recipe_id(): number {
+    return this._recipe_id;
   }
 
   public toString(){

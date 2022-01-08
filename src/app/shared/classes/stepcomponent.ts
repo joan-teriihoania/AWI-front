@@ -17,6 +17,20 @@ export class StepComponent {
     return this._component;
   }
 
+  getComponentID(): number {
+    let id;
+    if (this.component instanceof Step){
+      id = this.component.step_id;
+    }
+    else if(this.component instanceof Recipe){
+      id = this.component.recipe_id;
+    }
+    else{
+      id = this.component.ingredient_id;
+    }
+    return id;
+  }
+
   get quantity(): number {
     return this._quantity;
   }

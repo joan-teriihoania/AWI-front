@@ -23,7 +23,7 @@ import { Allergene } from '../classes/allergene';
     }
   
     post(ingredient: Ingredient){
-      return this.apiService.put<Ingredient>("/ingredients", {name: ingredient.name})
+      return this.apiService.put<Ingredient>("/ingredients", {unit_id:ingredient.getUnitID(),ingredient_category_id:ingredient.getCategoryID(),name: ingredient.name, price: ingredient.price})
     }
   
     // Considered not created if ID is -1
@@ -38,7 +38,10 @@ import { Allergene } from '../classes/allergene';
         })
       } else {
         return this.apiService.put<Ingredient>("/ingredients/" + ingredient.ingredient_id, {
-          name: ingredient.name
+            unit_id:ingredient.getUnitID(),
+            ingredient_category_id:ingredient.getCategoryID(),
+            name: ingredient.name,
+            price: ingredient.price
         })
       }
     }

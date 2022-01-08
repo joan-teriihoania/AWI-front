@@ -12,6 +12,7 @@ import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards
 import { AllergenesTableComponent } from '../shared/components/allergenes-table/allergenes-table.component';
 import { IngredientsTableComponent } from '../shared/components/ingredients-table/ingredients-table.component';
 import { AllergenesEditFormComponent } from "../shared/components/allergenes-edit-form/allergenes-edit-form.component";
+import {DataTablesModule} from "angular-datatables";
 
 const routes: Routes = [
   {
@@ -25,13 +26,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
-    RouterModule.forChild(routes),
-    NgApexchartsModule,
-  ],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        RouterModule.forChild(routes),
+        NgApexchartsModule,
+        DataTablesModule,
+    ],
   declarations: [
     DashboardComponent,
     SalesSummaryComponent,

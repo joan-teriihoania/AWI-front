@@ -27,6 +27,12 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {ApiInterceptor} from "./shared/http/api.interceptor";
 import {ToastrModule} from "ngx-toastr";
 import { IngredientsTableComponent } from './shared/components/ingredients-table/ingredients-table.component';
+import {DataTablesModule} from "angular-datatables";
+import { TopRightUserComponent } from './shared/header/top-right-user/top-right-user.component';
+import {PagenotfoundComponent} from "./shared/components/system/pagenotfound/pagenotfound.component";
+import { LoginFormComponent } from './shared/components/login-form/login-form.component';
+import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -41,7 +47,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SpinnerComponent,
     FullComponent,
     NavigationComponent,
-    SidebarComponent
+    SidebarComponent,
+    TopRightUserComponent,
+    PagenotfoundComponent,
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +63,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbModule,
     RouterModule.forRoot(Approutes, {useHash: false, relativeLinkResolution: 'legacy'}),
     PerfectScrollbarModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    DataTablesModule,
+    SweetAlert2Module
   ],
   providers: [
     {

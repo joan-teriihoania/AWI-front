@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
+import {SwalPortalComponent} from "@sweetalert2/ngx-sweetalert2/lib/swal-portal.component";
+import {SwalComponent, SwalPortalDirective, SwalPortalTarget} from "@sweetalert2/ngx-sweetalert2";
+import swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +9,15 @@ import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
 export class PopupService {
 
   constructor(
-    private swalComponent: SwalComponent
   ) {
   }
 
   private show(icon: "error" | "info" | "warning" | "success", title: string, message: string){
-    this.swalComponent.title = title;
-    this.swalComponent.text = message;
-    this.swalComponent.icon = icon;
-    return this.swalComponent.fire();
+    return swal.fire({
+      title,
+      html: message,
+      icon
+    })
   }
 
   showInfo(title: string, message: string){

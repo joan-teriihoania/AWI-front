@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "../../session/login.service";
+import {PopupService} from "../../notification/popup.service";
 
 @Component({
   selector: 'app-register-form',
@@ -13,7 +14,8 @@ export class RegisterFormComponent implements OnInit {
   isLogged: boolean = false
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private popupService: PopupService
   ) {
     loginService.isLoggedIn().then(() => {
       this.isLogged = true
@@ -44,7 +46,7 @@ export class RegisterFormComponent implements OnInit {
       this.registerForm.value.email,
       this.registerForm.value.password
     ).then(() => {
-
+      this.popupService.showSuccess("Compte créé", "Un compte vient d'être créé pour vous, confirmez votre adresse en cliquant sur le lien qui vient de vous être envoyé par mail puis patientez qu'un administrateur vienne valider votre compte.")
     }).catch((err: string) => {
       this.errorMessage = err
     })

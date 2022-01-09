@@ -1,18 +1,20 @@
-import {Component, ContentChild, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Allergene} from "../../classes/allergene";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AllergenesService} from "../../dao/allergenes.service";
-import {NotificationService} from "../../notification/notification.service";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NotificationService} from "../../notification/notification.service";
+import {AllergenesService} from "../../dao/allergenes.service";
 
 @Component({
-  selector: 'app-allergenes-edit-form',
-  templateUrl: './allergenes-edit-form.component.html',
-  styleUrls: ['./allergenes-edit-form.component.scss']
+  selector: 'app-allergenes-create-form',
+  templateUrl: './allergenes-create-form.component.html',
+  styleUrls: ['./allergenes-create-form.component.scss']
 })
-export class AllergenesEditFormComponent implements OnInit {
-  @Input() allergene: Allergene = new Allergene(-1, "")
+export class AllergenesCreateFormComponent implements OnInit {
   @ViewChild('content') content: any;
+
+  allergene: Allergene = new Allergene(-1, "")
+  callbacks: ((success: any, error: any) => void)[] = []
   allergeneForm: FormGroup = new FormGroup({});
   closeResult = ''
 
@@ -21,6 +23,10 @@ export class AllergenesEditFormComponent implements OnInit {
     private notificationService: NotificationService,
     private allergeneService: AllergenesService
   ) {
+  }
+
+  addCallbackOnSubmit(callback: (success: any, error: any) => void){
+    this.callbacks.push(callback)
   }
 
   open() {
@@ -52,16 +58,23 @@ export class AllergenesEditFormComponent implements OnInit {
 
   onSubmit(){
     const allergeneFormValue = this.allergeneForm.value
-    const copyAllergene = JSON.parse(JSON.stringify(this.allergene))
-    copyAllergene.name = allergeneFormValue.name
+    this.allergene.name = allergeneFormValue.name
 
-    this.allergeneService.put(copyAllergene).then(() => {
-      this.allergene.name = copyAllergene.name
-      this.notificationService.showSuccess("", "Allergène modifié")
+    this.allergeneService.post(this.allergene).then(() => {
+      for (const callback of this.callbacks) {
+        callback(this.allergene, undefined)
+      }
+
+      this.notificationService.showSuccess("", "Allergène créé")
     }).catch((err) => {
+      for (const callback of this.callbacks) {
+        callback(undefined, err)
+      }
+
       this.notificationService.showError(err.error, "Erreur rencontrée")
     })
   }
 
   getName(){return this.allergeneForm.get('name')}
+
 }

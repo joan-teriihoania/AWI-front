@@ -1,11 +1,12 @@
 <!-- title -->
 <div class="table-responsive">
-  <table datatable class="table align-middle" *ngIf="allergenes.length > 0; else noAllergenes">
+  <table datatable [dtOptions]="dtOptions" class="table align-middle" *ngIf="allergenes.length > 0; else noAllergenes">
     <thead>
-    <tr>
-      <th class="text-dark font-medium fs-4">#</th>
-      <th class="text-dark font-medium fs-4">Nom</th>
-    </tr>
+      <tr>
+        <th class="text-dark font-medium fs-4">#</th>
+        <th class="text-dark font-medium fs-4">Nom</th>
+        <th class="text-dark font-medium fs-4">Actions</th>
+      </tr>
     </thead>
     <tbody>
     <tr *ngFor='let allergene of allergenes'>
@@ -14,6 +15,13 @@
       </td>
       <td>
         <p class="mb-0 fw-normal">{{allergene.name}}</p>
+      </td>
+      <td>
+        <div class="btn-group" role="group">
+          <div class="btn btn-sm btn-info" (click)="editFormClicked(component)">Modifier</div>
+          <div class="btn btn-sm btn-danger" (click)="deleteClicked(allergene)">Supprimer</div>
+        </div>
+        <app-allergenes-edit-form [allergene]="allergene" #component></app-allergenes-edit-form>
       </td>
     </tr>
     </tbody>

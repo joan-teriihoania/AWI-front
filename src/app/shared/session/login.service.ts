@@ -53,6 +53,10 @@ export class LoginService {
     })
   }
 
+  activate(id: string){
+    return this.apiService.putObservable("/account/activate/" + id, {})
+  }
+
   logout(){
     this.setSessionToken("")
   }

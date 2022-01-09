@@ -14,6 +14,8 @@ import { IngredientsTableComponent } from '../shared/components/ingredients-tabl
 import { IngredientsCategoryTableComponent } from '../shared/components/ingredients-category-table/ingredients-category-table.component';
 import { AllergenesEditFormComponent } from "../shared/components/allergenes-edit-form/allergenes-edit-form.component";
 import {DataTablesModule} from "angular-datatables";
+import {RecipesTableComponent} from "../shared/components/recipes-table/recipes-table.component";
+import {AllergenesCreateFormComponent} from "../shared/components/allergenes-create-form/allergenes-create-form.component";
 
 const routes: Routes = [
   {
@@ -46,6 +48,8 @@ const routes: Routes = [
     AllergenesEditFormComponent,
     IngredientsTableComponent,
     IngredientsCategoryTableComponent
+    AllergenesCreateFormComponent,
+    RecipesTableComponent
   ],
 })
 export class DashboardModule {}

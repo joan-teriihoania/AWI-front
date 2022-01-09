@@ -23,6 +23,7 @@ export class AccountActivationComponent implements OnInit {
     this.loginService.activate(this.route.snapshot.params.id).subscribe(() => {
       this.popupService.showSuccess("Activation de compte", "Votre compte a été activé ! Vous pouvez à présent vous connecter.")
     }, (err) => {
+      console.log(err)
       this.popupService.showError("Activation de compte", `Une erreur est survenue lors de l'activation de votre compte : <code>${err.error}</code>`);
     }, () => {
       swal.hideLoading()

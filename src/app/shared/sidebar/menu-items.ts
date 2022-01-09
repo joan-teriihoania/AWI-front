@@ -1,7 +1,7 @@
 import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
- 
+
   {
     path: '/dashboard',
     title: 'Dashboard',
@@ -10,7 +10,7 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
-  {
+/*  {
     path: '/component/alert',
     title: 'Alert',
     icon: 'bi bi-bell',
@@ -81,5 +81,5 @@ export const ROUTES: RouteInfo[] = [
     class: '',
     extralink: false,
     submenu: []
-  }
+  }*/
 ];

@@ -47,7 +47,7 @@ const routes: Routes = [
     AllergenesTableComponent,
     AllergenesEditFormComponent,
     IngredientsTableComponent,
-    IngredientsCategoryTableComponent
+    IngredientsCategoryTableComponent,
     AllergenesCreateFormComponent,
     RecipesTableComponent
   ],

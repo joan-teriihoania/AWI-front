@@ -19,29 +19,38 @@ export class DashboardComponent implements AfterViewInit {
   allergenes: Allergene[] = []
   ingredients: Ingredient[] = []
   ingredientscategory: IngredientCategory[] = []
-  constructor(allergeneService: AllergenesService, ingredientService: IngredientsService, ingredientCategoryService: IngredientCategoriesService) {
   recipes: Recipe[] = []
 
   constructor(
+    private ingredientService: IngredientsService,
+    private ingredientCategoryService: IngredientCategoriesService,
     private allergeneService: AllergenesService,
     private recipeService: RecipesService
   ) {
     this.subtitle = 'This is some text within a card block.';
     this.populateAllergenes()
     this.populateRecipes()
+    this.populateIngredientCategories()
+    this.populateIngredients()
+  }
+
+  populateIngredientCategories(){
+    this.ingredientCategoryService.getAll().then((ingredientscategory) => {
+      console.log(ingredientscategory)
+      this.ingredientscategory = ingredientscategory
+    }).catch(console.error)
+  }
+
+  populateIngredients(){
+    this.ingredientService.getAll().then((ingredients) => {
+      console.log(ingredients)
+      this.ingredients = ingredients
+    }).catch(console.error)
   }
 
   populateAllergenes(){
     this.allergeneService.getAll().then((allergenes) => {
       this.allergenes = allergenes
-    }).catch(console.error)
-    ingredientService.getAll().then((ingredients) => {
-      console.log(ingredients)
-      this.ingredients = ingredients
-    }).catch(console.error)
-    ingredientCategoryService.getAll().then((ingredientscategory) => {
-      console.log(ingredientscategory)
-      this.ingredientscategory = ingredientscategory
     }).catch(console.error)
   }
 
@@ -59,8 +68,10 @@ export class DashboardComponent implements AfterViewInit {
     return this.ingredients
   }
 
-  getIngredientsCategory(){
+  getIngredientsCategory() {
     return this.ingredientscategory
+  }
+
   getRecipes(){
     return this.recipes
   }

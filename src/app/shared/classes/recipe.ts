@@ -42,10 +42,6 @@ export class Recipe  {
     return "";
   }
 
-  get recipe_id(): number {
-    return this._recipe_id;
-  }
-
   get name(): string {
     return this._name;
   }

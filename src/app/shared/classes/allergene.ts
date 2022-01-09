@@ -1,6 +1,6 @@
 export class Allergene {
   constructor(
-    private _allergene_id: number,
+    public _allergene_id: number,
     private _name: string
   ) {
   }

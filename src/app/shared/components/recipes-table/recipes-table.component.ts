@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Recipe} from "../../classes/recipe";
 
 @Component({
   selector: 'app-recipes-table',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipes-table.component.scss']
 })
 export class RecipesTableComponent implements OnInit {
+  @Input() recipes: Recipe[] = []
 
   constructor() { }
 

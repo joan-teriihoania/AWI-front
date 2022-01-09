@@ -12,6 +12,8 @@ import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards
 import { AllergenesTableComponent } from '../shared/components/allergenes-table/allergenes-table.component';
 import { AllergenesEditFormComponent } from "../shared/components/allergenes-edit-form/allergenes-edit-form.component";
 import {DataTablesModule} from "angular-datatables";
+import {RecipesTableComponent} from "../shared/components/recipes-table/recipes-table.component";
+import {AllergenesCreateFormComponent} from "../shared/components/allergenes-create-form/allergenes-create-form.component";
 
 const routes: Routes = [
   {
@@ -41,7 +43,9 @@ const routes: Routes = [
     TopCardsComponent,
     BlogCardsComponent,
     AllergenesTableComponent,
-    AllergenesEditFormComponent
+    AllergenesEditFormComponent,
+    AllergenesCreateFormComponent,
+    RecipesTableComponent
   ],
 })
 export class DashboardModule {}

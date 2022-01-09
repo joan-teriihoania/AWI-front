@@ -1,1 +1,36 @@
-<p>recipes-table works!</p>
+<!-- title -->
+<div class="table-responsive">
+  <table datatable class="table align-middle" *ngIf="recipes.length > 0; else noRecipes">
+    <thead>
+    <tr>
+      <th class="text-dark font-medium fs-4">#</th>
+      <th class="text-dark font-medium fs-4">Nom</th>
+      <th class="text-dark font-medium fs-4">Couverts</th>
+      <th class="text-dark font-medium fs-4">Auteur</th>
+      <th class="text-dark font-medium fs-4">Catégorie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor='let recipe of recipes'>
+      <td>
+        <p class="mb-0 fw-normal">{{recipe.recipe_id}}</p>
+      </td>
+      <td>
+        <p class="mb-0 fw-normal">{{recipe.name}}</p>
+      </td>
+      <td>
+        <p class="mb-0 fw-normal">{{recipe.nb_couvert}}</p>
+      </td>
+      <td>
+        <p class="mb-0 fw-normal">{{recipe.author.username}}</p>
+      </td>
+      <td>
+        <p class="mb-0 fw-normal">{{recipe.category.name}}</p>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noRecipes>
+  <div class="w-100 text-center">Il n'y a pas de recettes</div>
+</ng-template>

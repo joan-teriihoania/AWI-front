@@ -33,7 +33,8 @@ import { LoginFormComponent } from './shared/components/login-form/login-form.co
 import { RegisterFormComponent } from './shared/components/register-form/register-form.component';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import { AccountActivationComponent } from './shared/components/account-activation/account-activation.component';
-import { RecipesTableComponent } from './shared/components/recipes-table/recipes-table.component';
+import { AccountResetRequestComponent } from './shared/components/account-reset-request/account-reset-request.component';
+import { AccountResetPageComponent } from './shared/components/account-reset-page/account-reset-page.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -54,7 +55,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LoginFormComponent,
     RegisterFormComponent,
     AccountActivationComponent,
-    RecipesTableComponent
+    AccountResetRequestComponent,
+    AccountResetPageComponent
   ],
   imports: [
     CommonModule,
@@ -85,7 +87,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       multi: true
     }
   ],
-  exports: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

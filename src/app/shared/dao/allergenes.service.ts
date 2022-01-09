@@ -21,25 +21,15 @@ export class AllergenesService {
     return this.apiService.get<Allergene[]>("/allergenes", {})
   }
 
-  put(allergene: Allergene){
-    return this.apiService.put<Allergene>("/allergenes", {name: allergene.name})
+  post(allergene: Allergene){
+    return this.apiService.post<Allergene>("/allergenes", {name: allergene.name})
   }
 
   // Considered not created if ID is -1
-  post(allergene: Allergene, createIfNotExists = true){
-    if(createIfNotExists && allergene.allergene_id === -1){
-      // if created, sets returned object as the given one to update its id
-      return new Promise((resolve, reject) => {
-        this.put(allergene).then((allergene_) => {
-          allergene = allergene_
-          resolve(allergene)
-        }).catch(reject)
-      })
-    } else {
-      return this.apiService.post<Allergene>("/allergenes/" + allergene.allergene_id, {
-        name: allergene.name
-      })
-    }
+  put(allergene: Allergene, createIfNotExists = true){
+    return this.apiService.put<Allergene>("/allergenes/" + allergene.allergene_id, {
+      name: allergene.name
+    })
   }
 
   delete(allergene: Allergene){

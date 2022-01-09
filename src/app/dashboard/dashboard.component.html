@@ -1,3 +1,58 @@
+<!-- ============================================================== -->
+<!-- Table -->
+<!-- ============================================================== -->
+<div class="row">
+  <!-- column -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <!-- title -->
+        <div class="row">
+          <div class="col">
+            <h4 class="card-title">Allergènes</h4>
+          </div>
+          <div class="col">
+            <div class="text-right">
+              <div class="btn btn-sm btn-success" (click)="addAllergene(addAllergeneForm)">Ajouter</div>
+              <app-allergenes-create-form #addAllergeneForm></app-allergenes-create-form>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="card-subtitle">Liste de tous les allergènes</h5>
+
+        <!-- title -->
+        <app-allergenes-table [allergenes]="getAllergenes()"></app-allergenes-table>
+        <app-allergenes-edit-form *ngIf="getAllergenes().length > 0" [allergene]="getAllergenes()[0]"></app-allergenes-edit-form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <!-- title -->
+        <div class="row">
+          <div class="col">
+            <h4 class="card-title">Recettes</h4>
+          </div>
+          <div class="col">
+            <div class="text-right">
+              <div class="btn btn-sm btn-success">Ajouter</div>
+            </div>
+          </div>
+        </div>
+        <h5 class="card-subtitle">Liste de toutes les recettes</h5>
+
+        <!-- title -->
+        <app-recipes-table [recipes]="getRecipes()"></app-recipes-table>
+        <app-allergenes-edit-form *ngIf="getAllergenes().length > 0" [allergene]="getAllergenes()[0]"></app-allergenes-edit-form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================================================== -->
+<!-- Table -->
+<!-- ============================================================== -->
+
 <app-top-cards></app-top-cards>
 <!-- ============================================================== -->
 <!-- Sales chart -->
@@ -12,28 +67,6 @@
 </div>
 <!-- ============================================================== -->
 <!-- Sales chart -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Table -->
-<!-- ============================================================== -->
-<div class="row">
-  <!-- column -->
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <!-- title -->
-        <h4 class="card-title">Allergènes</h4>
-        <h5 class="card-subtitle">Liste de tous les allergènes</h5>
-
-        <!-- title -->
-        <app-allergenes-table [allergenes]="getAllergenes()"></app-allergenes-table>
-        <app-allergenes-edit-form *ngIf="getAllergenes().length > 0" [allergene]="getAllergenes()[0]"></app-allergenes-edit-form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ============================================================== -->
-<!-- Table -->
 <!-- ============================================================== -->
 <!-- ============================================================== -->
 <!-- cards -->

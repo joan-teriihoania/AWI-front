@@ -23,7 +23,7 @@ import {StepComponent} from "../classes/stepcomponent";
     }
   
     post(stepcomponent: StepComponent){
-      return this.apiService.put<StepComponent>("/step_components", {})
+      return this.apiService.put<StepComponent>("/step_components", {step_id:stepcomponent.getComponentID(),quantity:stepcomponent.quantity})
     }
   
     // Considered not created if ID is -1
@@ -38,7 +38,8 @@ import {StepComponent} from "../classes/stepcomponent";
         })
       } else {
         return this.apiService.put<StepComponent>("/step_components/" + stepcomponent.step_component_id, {
-          //name: stepcomponent.name
+            step_id:stepcomponent.getComponentID(),
+            quantity:stepcomponent.quantity
         })
       }
     }

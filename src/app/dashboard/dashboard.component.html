@@ -49,6 +49,36 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <!-- column -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <!-- title -->
+        <h4 class="card-title">Ingrédients</h4>
+        <h5 class="card-subtitle">Liste de tous les ingredients</h5>
+
+        <!-- title -->
+        <app-ingredients-table [ingredients]="getIngredients()"></app-ingredients-table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!-- column -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <!-- title -->
+        <h4 class="card-title">Catégories d'ingrédients</h4>
+        <h5 class="card-subtitle">Liste de toutes les catégories d'ingredients</h5>
+
+        <!-- title -->
+        <app-ingredients-category-table [ingredientscategory]="getIngredientsCategory()"></app-ingredients-category-table>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- ============================================================== -->
 <!-- Table -->
 <!-- ============================================================== -->

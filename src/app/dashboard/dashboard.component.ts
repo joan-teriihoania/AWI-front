@@ -1,6 +1,10 @@
 import { Component, AfterViewInit } from '@angular/core';
 import {Allergene} from "../shared/classes/allergene";
 import {AllergenesService} from "../shared/dao/allergenes.service";
+import {Ingredient} from "../shared/classes/ingredient";
+import {IngredientsService} from "../shared/dao/ingredients.service";
+import {IngredientCategory} from "../shared/classes/ingredientcategory";
+import {IngredientCategoriesService} from "../shared/dao/ingredientCategories.service";
 import {Recipe} from "../shared/classes/recipe";
 import {RecipesService} from "../shared/dao/recipes.service";
 import {AllergenesEditFormComponent} from "../shared/components/allergenes-edit-form/allergenes-edit-form.component";
@@ -13,15 +17,35 @@ import {AllergenesCreateFormComponent} from "../shared/components/allergenes-cre
 export class DashboardComponent implements AfterViewInit {
   subtitle: string;
   allergenes: Allergene[] = []
+  ingredients: Ingredient[] = []
+  ingredientscategory: IngredientCategory[] = []
   recipes: Recipe[] = []
 
   constructor(
+    private ingredientService: IngredientsService,
+    private ingredientCategoryService: IngredientCategoriesService,
     private allergeneService: AllergenesService,
     private recipeService: RecipesService
   ) {
     this.subtitle = 'This is some text within a card block.';
     this.populateAllergenes()
     this.populateRecipes()
+    this.populateIngredientCategories()
+    this.populateIngredients()
+  }
+
+  populateIngredientCategories(){
+    this.ingredientCategoryService.getAll().then((ingredientscategory) => {
+      console.log(ingredientscategory)
+      this.ingredientscategory = ingredientscategory
+    }).catch(console.error)
+  }
+
+  populateIngredients(){
+    this.ingredientService.getAll().then((ingredients) => {
+      console.log(ingredients)
+      this.ingredients = ingredients
+    }).catch(console.error)
   }
 
   populateAllergenes(){
@@ -38,6 +62,14 @@ export class DashboardComponent implements AfterViewInit {
 
   getAllergenes(){
     return this.allergenes
+  }
+
+  getIngredients(){
+    return this.ingredients
+  }
+
+  getIngredientsCategory() {
+    return this.ingredientscategory
   }
 
   getRecipes(){

@@ -1,0 +1,25 @@
+
+<!-- title -->
+<div class="table-responsive">
+    <table datatable class="table align-middle" *ngIf="ingredientscategory.length > 0; else noIngredientsCategory">
+      <thead>
+      <tr>
+        <th class="text-dark font-medium fs-4">#</th>
+        <th class="text-dark font-medium fs-4">Nom</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let ingredientcat of ingredientscategory'>
+        <td>
+          <p class="mb-0 fw-normal">{{ingredientcat.ingredient_category_id}}</p>
+        </td>
+        <td>
+          <p class="mb-0 fw-normal">{{ingredientcat.name}}</p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noIngredientsCategory>
+    <div class="w-100 text-center">Il n'y a pas de catégorie d'ingredient</div>
+  </ng-template>

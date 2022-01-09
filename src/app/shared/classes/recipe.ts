@@ -22,6 +22,9 @@ export class Recipe  {
     private _ingredients: Ingredient[]
   ) {
   }
+  get recipe_id(): number {
+    return this._recipe_id;
+  }
 
   public toString(){
     return this._name;
@@ -37,10 +40,6 @@ export class Recipe  {
 
   getName(): string {
     return "";
-  }
-
-  get recipe_id(): number {
-    return this._recipe_id;
   }
 
   get name(): string {

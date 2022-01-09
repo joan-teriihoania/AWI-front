@@ -9,7 +9,7 @@ export class Ingredient {
     private _price: number,
     private _unit: Unit,
     private _category: IngredientCategory,
-    private allergenes: Allergene[]
+    private _allergenes: Allergene[]
   ) {
   }
 
@@ -41,10 +41,8 @@ export class Ingredient {
     return this._category.ingredient_category_id;
   }
 
-  getAllergenes(){
-    for (const allergene in this.allergenes){
-      
-    }
+  get allergenes(){
+    return this._allergenes
   }
 
   public toString(){

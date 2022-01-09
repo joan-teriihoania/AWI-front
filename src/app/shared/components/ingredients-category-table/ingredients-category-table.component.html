@@ -1,7 +1,7 @@
 
 <!-- title -->
 <div class="table-responsive">
-    <table class="table align-middle" *ngIf="ingredientscategory.length > 0; else noIngredientsCategory">
+    <table datatable class="table align-middle" *ngIf="ingredientscategory.length > 0; else noIngredientsCategory">
       <thead>
       <tr>
         <th class="text-dark font-medium fs-4">#</th>
@@ -11,10 +11,10 @@
       <tbody>
       <tr *ngFor='let ingredientcat of ingredientscategory'>
         <td>
-          <h5 class="mb-0 fw-normal">{{ingredientcat.ingredient_category_id}}</h5>
+          <p class="mb-0 fw-normal">{{ingredientcat.ingredient_category_id}}</p>
         </td>
         <td>
-          <h5 class="mb-0 fw-normal">{{ingredientcat.name}}</h5>
+          <p class="mb-0 fw-normal">{{ingredientcat.name}}</p>
         </td>
       </tr>
       </tbody>
@@ -23,4 +23,3 @@
   <ng-template #noIngredientsCategory>
     <div class="w-100 text-center">Il n'y a pas de catégorie d'ingredient</div>
   </ng-template>
-  

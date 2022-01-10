@@ -16,6 +16,8 @@ import { AllergenesEditFormComponent } from "../shared/components/allergenes-edi
 import {DataTablesModule} from "angular-datatables";
 import {RecipesTableComponent} from "../shared/components/recipes-table/recipes-table.component";
 import {AllergenesCreateFormComponent} from "../shared/components/allergenes-create-form/allergenes-create-form.component";
+import { IngredientsEditFormComponent } from "../shared/components/ingredients-edit-form/ingredients-edit-form.component";
+import {IngredientsCreateFormComponent}from "../shared/components/ingredients-create-form/ingredients-create-form.component";
 
 const routes: Routes = [
   {
@@ -46,6 +48,8 @@ const routes: Routes = [
     BlogCardsComponent,
     AllergenesTableComponent,
     AllergenesEditFormComponent,
+    IngredientsCreateFormComponent,
+    IngredientsEditFormComponent,
     IngredientsTableComponent,
     IngredientsCategoryTableComponent,
     AllergenesCreateFormComponent,

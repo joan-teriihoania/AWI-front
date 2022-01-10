@@ -21,12 +21,24 @@ export class Ingredient {
     return this._name;
   }
 
+  set name(value: string) {
+    this._name = value;
+  }
+
   get price(): number {
     return this._price;
   }
 
+  set price(value : number){
+    this._price = value;
+  }
+
   get unit(): Unit {
     return this._unit;
+  }
+
+  set unit(value : Unit){
+    this._unit=value;
   }
 
   getUnitID(){
@@ -36,6 +48,10 @@ export class Ingredient {
   get category(): IngredientCategory {
     return this._category;
   }
+  
+  set category(value : IngredientCategory){
+    this._category=value;
+  }
 
   getCategoryID(){
     return this._category.ingredient_category_id;
@@ -43,6 +59,10 @@ export class Ingredient {
 
   get allergenes(){
     return this._allergenes
+  }
+
+  set allergenes(value : Allergene[]){
+    this._allergenes=value;
   }
 
   public toString(){

@@ -9,6 +9,8 @@ import {Recipe} from "../shared/classes/recipe";
 import {RecipesService} from "../shared/dao/recipes.service";
 import {AllergenesEditFormComponent} from "../shared/components/allergenes-edit-form/allergenes-edit-form.component";
 import {AllergenesCreateFormComponent} from "../shared/components/allergenes-create-form/allergenes-create-form.component";
+import {IngredientsCreateFormComponent} from "../shared/components/ingredients-create-form/ingredients-create-form.component";
+
 //declare var require: any;
 
 @Component({
@@ -80,6 +82,17 @@ export class DashboardComponent implements AfterViewInit {
     component.addCallbackOnSubmit((success: any, error: any) => {
       if(success){
         this.populateAllergenes()
+      } else {
+        console.log(error)
+      }
+    })
+    component.open()
+  }
+
+  addIngredient(component: IngredientsCreateFormComponent){
+    component.addCallbackOnSubmit((success: any, error: any) => {
+      if(success){
+        this.populateIngredients()
       } else {
         console.log(error)
       }

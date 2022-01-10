@@ -37,6 +37,8 @@ import { IngredientsCategoryTableComponent } from './shared/components/ingredien
 import { AccountActivationComponent } from './shared/components/account-activation/account-activation.component';
 import { AccountResetRequestComponent } from './shared/components/account-reset-request/account-reset-request.component';
 import { AccountResetPageComponent } from './shared/components/account-reset-page/account-reset-page.component';
+import { IngredientsEditFormComponent } from './shared/components/ingredients-edit-form/ingredients-edit-form.component';
+import { IngredientsCreateFormComponent } from './shared/components/ingredients-create-form/ingredients-create-form.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,

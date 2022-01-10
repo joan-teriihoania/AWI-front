@@ -19,6 +19,10 @@ export class User {
     return this._email;
   }
 
+  set email(value: string) {
+    this._email = value;
+  }
+
   get password(): string {
     return this._password;
   }

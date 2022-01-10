@@ -10,6 +10,14 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: []
   },
+  {
+    path: '/admin',
+    title: 'Admin dashboard',
+    icon: 'bi bi-table',
+    class: '',
+    extralink: false,
+    submenu: []
+  }
 /*  {
     path: '/component/alert',
     title: 'Alert',

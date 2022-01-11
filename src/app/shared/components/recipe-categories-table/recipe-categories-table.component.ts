@@ -1,33 +1,33 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Recipe} from "../../classes/recipe";
 import {Allergene} from "../../classes/allergene";
 import {AllergenesService} from "../../dao/allergenes.service";
 import {NotificationService} from "../../notification/notification.service";
 import {AllergenesEditFormComponent} from "../allergenes-edit-form/allergenes-edit-form.component";
-import {RecipesEditFormComponent} from "../recipes-edit-form/recipes-edit-form.component";
-import {RecipesService} from "../../dao/recipes.service";
+import {RecipeCategory} from "../../classes/recipecategory";
+import {RecipeCategoriesService} from "../../dao/recipe-categories.service";
+import {RecipeCategoriesEditFormComponent} from "../recipe-categories-edit-form/recipe-categories-edit-form.component";
 
 @Component({
-  selector: 'app-recipes-table',
-  templateUrl: './recipes-table.component.html',
-  styleUrls: ['./recipes-table.component.scss']
+  selector: 'app-recipe-categories-table',
+  templateUrl: './recipe-categories-table.component.html',
+  styleUrls: ['./recipe-categories-table.component.scss']
 })
-export class RecipesTableComponent implements OnInit {
-  @Input() recipes: Recipe[] = []
+export class RecipeCategoriesTableComponent implements OnInit {
+  @Input() recipeCategories: RecipeCategory[] = []
   dtOptions: any = {}
 
   constructor(
-    private recipeService: RecipesService,
+    private recipeCategoryService: RecipeCategoriesService,
     private notificationService: NotificationService
   ) {}
 
-  editFormClicked(component: RecipesEditFormComponent){
+  editFormClicked(component: RecipeCategoriesEditFormComponent){
     component.open()
   }
 
-  deleteClicked(recipe: Recipe){
-    this.recipeService.delete(recipe).then(() => {
-      this.recipes = this.recipes.filter(obj => obj !== recipe);
+  deleteClicked(recipe_category: RecipeCategory){
+    this.recipeCategoryService.delete(recipe_category).then(() => {
+      this.recipeCategories = this.recipeCategories.filter(obj => obj !== recipe_category);
     }).catch((err) => {
       this.notificationService.showError(err.error, "Erreur rencontrée")
     })

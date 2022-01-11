@@ -1,0 +1,29 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Création d'une catégorie de recette</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="recipeCategoryForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col"><label for="name">Nom</label></div>
+        <div class="col">
+          <input type="text" class="form-control" id="name" name="name" required minlength="4" formControlName="name">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary mb-2" [disabled]="!recipeCategoryForm.valid">Enregistrer</button>
+        </div>
+      </div>
+      <div *ngIf="!recipeCategoryForm.valid" class="row">
+        <div class="col text-center">
+          <small class="text-danger">
+            <div *ngIf="recipeCategoryForm.get('name').hasError('required')">Veuillez spécifier un nom de catégorie de recette</div>
+            <div *ngIf="recipeCategoryForm.get('name').hasError('minlength')">Le nom d'une catégorie de recette doit faire 4 caractères au minimum</div>
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

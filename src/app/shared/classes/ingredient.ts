@@ -1,8 +1,9 @@
 import {Unit} from "./unit";
 import {IngredientCategory} from "./ingredientcategory";
 import {Allergene} from "./allergene";
+import {Component} from "./component";
 
-export class Ingredient {
+export class Ingredient implements Component {
   constructor(
     private _ingredient_id: number,
     private _name: string,
@@ -67,5 +68,9 @@ export class Ingredient {
 
   public toString(){
     return this.name;
+  }
+
+  getId(): number {
+    return this.ingredient_id;
   }
 }

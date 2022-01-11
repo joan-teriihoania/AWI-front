@@ -66,6 +66,6 @@ export class LoginService {
   }
 
   public isLoggedInObservable(){
-    return this.apiService.getObservable("/account", {})
+    return this.apiService.getObservable<User>("/account", {})
   }
 }

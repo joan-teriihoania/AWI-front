@@ -1,8 +1,9 @@
 
 import {Ingredient} from "./ingredient";
 import {StepComponent} from "./stepcomponent";
+import {Component} from "./component";
 
-export class Step {
+export class Step implements Component {
   constructor(
     private _step_id: number,
     private _name: string,
@@ -35,5 +36,9 @@ export class Step {
 
   get components(): StepComponent[] {
     return this._components;
+  }
+
+  getId(): number {
+    return this.step_id;
   }
 }

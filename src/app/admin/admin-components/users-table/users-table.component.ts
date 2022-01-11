@@ -93,8 +93,8 @@ export class UsersTableComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Enregistrer',
       showLoaderOnConfirm: true,
-      preConfirm: (email) => {
-        this.userService.block(user).then(() => {
+      preConfirm: (reason) => {
+        this.userService.block(user, reason).then(() => {
           this.updateUsers()
           swal.fire({
             icon: "success",

@@ -1,0 +1,55 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Modification d'une recette</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-1">
+        <div class="col"><label for="name">Nom</label></div>
+        <div class="col-6">
+          <input type="text" class="w-100 form-control" id="name" name="name" required minlength="4" formControlName="name">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <div class="col"><label for="nb_couvert">Nombre de couvert</label></div>
+        <div class="col-6">
+          <input type="number" class="w-100 form-control" id="nb_couvert" name="nb_couvert" required min="1" value="1" formControlName="nb_couvert">
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <div class="col">
+          <label for="category">Catégorie (<a class="btn btn-link btn-sm" (click)="addRecipeCategory(addRecipeCategoryForm)">créer</a>)</label>
+          <app-recipe-categories-create-form #addRecipeCategoryForm></app-recipe-categories-create-form>
+        </div>
+        <div class="col-6">
+          <select class="w-100 form-control" id="category" name="category" required formControlName="category">
+            <option *ngFor="let recipeCategory of getRecipeCategories()" [ngValue]="recipeCategory" [selected]="recipeCategory.recipe_category_id == recipe.category.recipe_category_id">{{recipeCategory.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <button type="submit" class="w-100 btn btn-primary mb-2" [disabled]="!recipeForm.valid">Enregistrer</button>
+        </div>
+      </div>
+      <div *ngIf="!recipeForm.valid" class="row">
+        <div class="col text-center">
+          <small class="text-danger">
+            <div *ngIf="errorMessage != ''">{{errorMessage}}</div>
+            <div *ngIf="recipeForm.get('name').hasError('required')">Veuillez spécifier un nom pour votre recette</div>
+            <div *ngIf="recipeForm.get('name').hasError('minlength')">Le nom de votre recette doit faire 4 caractères au minimum</div>
+            <div *ngIf="recipeForm.get('nb_couvert').hasError('required')">Veuillez spécifier un nombre de converts</div>
+            <div *ngIf="recipeForm.get('nb_couvert').hasError('min')">Une recette doit pouvoir couvrir au moins un couvert</div>
+            <div *ngIf="recipeForm.get('category').hasError('required')">Veuillez spécifier une catégorie pour votre plat</div>
+          </small>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

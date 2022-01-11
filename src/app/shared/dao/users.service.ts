@@ -14,8 +14,10 @@ export class UsersService {
     return this.apiService.get<User[]>("/admin/users", {})
   }
 
-  block(user: User){
-    return this.apiService.put<User>("/admin/users/" + user.user_id + "/block", {})
+  block(user: User, reason: string = ""){
+    return this.apiService.put<User>("/admin/users/" + user.user_id + "/block", {
+      reason
+    })
   }
 
   unblock(user: User){
@@ -45,5 +47,9 @@ export class UsersService {
 
   delete(user: User){
     return this.apiService.delete<any>("/admin/users/" + user.user_id, {})
+  }
+
+  getLoggedUser(){
+    return this.apiService.get<User>("/account", {})
   }
 }

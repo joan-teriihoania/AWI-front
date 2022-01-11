@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ApiService} from "../http/api.service";
 import {Allergene} from "../classes/allergene";
 import {Recipe} from "../classes/recipe";
+import {Step} from "../classes/step";
 
 @Injectable({
   providedIn: 'root'
@@ -23,35 +24,35 @@ export class RecipesService {
   }
 
   put(recipe: Recipe){
-    return this.apiService.put<Recipe>("/recipes", {
+    return this.apiService.put<Recipe>("/recipes/" + recipe.recipe_id, {
       name: recipe.name,
       nb_couvert: recipe.nb_couvert,
-      user_id: recipe.author.username,
+      user_id: recipe.author.user_id,
       recipe_category_id: recipe.category.recipe_category_id
     })
   }
 
-  // Considered not created if ID is -1
-  post(recipe: Recipe, createIfNotExists = true){
-    if(createIfNotExists && recipe.recipe_id === -1){
-      // if created, sets returned object as the given one to update its id
-      return new Promise((resolve, reject) => {
-        this.put(recipe).then((recipe_) => {
-          recipe = recipe_
-          resolve(recipe)
-        }).catch(reject)
-      })
-    } else {
-      return this.apiService.post<Recipe>("/recipes/" + recipe.recipe_id, {
-        name: recipe.name,
-        nb_couvert: recipe.nb_couvert,
-        user_id: recipe.author.username,
-        recipe_category_id: recipe.category.recipe_category_id
-      })
-    }
+  post(recipe: Recipe){
+    return this.apiService.post<Recipe>("/recipes", {
+      name: recipe.name,
+      nb_couvert: recipe.nb_couvert,
+      user_id: recipe.author.user_id,
+      recipe_category_id: recipe.category.recipe_category_id
+    })
   }
 
   delete(recipe: Recipe){
     return this.apiService.delete<any>("/recipes/" + recipe.recipe_id, {})
+  }
+
+  addStep(recipe: Recipe, step: Step, position: number, quantity: number){
+    return this.apiService.post<Recipe>("/recipes/" + recipe.recipe_id + "/steps/" + step.step_id, {
+      position,
+      quantity
+    })
+  }
+
+  removeStep(recipe: Recipe, step: Step){
+    return this.apiService.delete<Recipe>("/recipes/" + recipe.recipe_id + "/steps/" + step.step_id, {})
   }
 }

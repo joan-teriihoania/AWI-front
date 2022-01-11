@@ -1,6 +1,7 @@
 import {Ingredient} from "./ingredient";
 import {Step} from "./step";
 import {Recipe} from "./recipe";
+import {Component} from "./component";
 
 export class StepComponent {
   get step_component_id(): number {
@@ -9,26 +10,21 @@ export class StepComponent {
 
   constructor(
     private _step_component_id: number,
-    private _component: Step | Recipe | Ingredient,
+    private _step: Step,
+    private _component: Component,
     private _quantity: number
   ) {}
 
-  get component(): Step | Recipe | Ingredient {
+  get step(): Step {
+    return this._step;
+  }
+
+  get component(): Component {
     return this._component;
   }
 
   getComponentID(): number {
-    let id;
-    if (this.component instanceof Step){
-      id = this.component.step_id;
-    }
-    else if(this.component instanceof Recipe){
-      id = this.component.recipe_id;
-    }
-    else{
-      id = this.component.ingredient_id;
-    }
-    return id;
+    return this.component.getId()
   }
 
   get quantity(): number {

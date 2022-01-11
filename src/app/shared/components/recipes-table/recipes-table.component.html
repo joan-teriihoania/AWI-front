@@ -1,6 +1,6 @@
 <!-- title -->
 <div class="table-responsive">
-  <table datatable class="table align-middle" *ngIf="recipes.length > 0; else noRecipes">
+  <table datatable [dtOptions]="dtOptions" class="table align-middle" *ngIf="recipes.length > 0; else noRecipes">
     <thead>
     <tr>
       <th class="text-dark font-medium fs-4">#</th>
@@ -8,6 +8,7 @@
       <th class="text-dark font-medium fs-4">Couverts</th>
       <th class="text-dark font-medium fs-4">Auteur</th>
       <th class="text-dark font-medium fs-4">Catégorie</th>
+      <th class="text-dark font-medium fs-4">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -26,6 +27,13 @@
       </td>
       <td>
         <p class="mb-0 fw-normal">{{recipe.category.name}}</p>
+      </td>
+      <td>
+        <div class="btn-group" role="group">
+          <div class="btn btn-sm btn-info" (click)="editFormClicked(component)">Modifier</div>
+          <div class="btn btn-sm btn-danger" (click)="deleteClicked(recipe)">Supprimer</div>
+        </div>
+        <app-recipes-edit-form #component [recipe]="recipe"></app-recipes-edit-form>
       </td>
     </tr>
     </tbody>

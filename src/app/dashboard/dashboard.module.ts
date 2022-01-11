@@ -16,6 +16,13 @@ import { AllergenesEditFormComponent } from "../shared/components/allergenes-edi
 import {DataTablesModule} from "angular-datatables";
 import {RecipesTableComponent} from "../shared/components/recipes-table/recipes-table.component";
 import {AllergenesCreateFormComponent} from "../shared/components/allergenes-create-form/allergenes-create-form.component";
+import {RecipesCreateFormComponent} from "../shared/components/recipes-create-form/recipes-create-form.component";
+import {RecipesEditFormComponent} from "../shared/components/recipes-edit-form/recipes-edit-form.component";
+import {RecipeCategoriesEditFormComponent} from "../shared/components/recipe-categories-edit-form/recipe-categories-edit-form.component";
+import {
+  RecipeCategoriesCreateFormComponent
+} from "../shared/components/recipe-categories-create-form/recipe-categories-create-form.component";
+import {RecipeCategoriesTableComponent} from "../shared/components/recipe-categories-table/recipe-categories-table.component";
 
 const routes: Routes = [
   {
@@ -29,14 +36,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        CommonModule,
-        RouterModule.forChild(routes),
-        NgApexchartsModule,
-        DataTablesModule,
-    ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule.forChild(routes),
+    NgApexchartsModule,
+    DataTablesModule
+  ],
   declarations: [
     DashboardComponent,
     SalesSummaryComponent,
@@ -49,7 +56,12 @@ const routes: Routes = [
     IngredientsTableComponent,
     IngredientsCategoryTableComponent,
     AllergenesCreateFormComponent,
-    RecipesTableComponent
+    RecipesTableComponent,
+    RecipesCreateFormComponent,
+    RecipesEditFormComponent,
+    RecipeCategoriesEditFormComponent,
+    RecipeCategoriesCreateFormComponent,
+    RecipeCategoriesTableComponent
   ],
 })
 export class DashboardModule {}

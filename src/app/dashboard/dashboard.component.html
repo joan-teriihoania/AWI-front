@@ -23,7 +23,28 @@
 
         <!-- title -->
         <app-allergenes-table [allergenes]="getAllergenes()"></app-allergenes-table>
-        <app-allergenes-edit-form *ngIf="getAllergenes().length > 0" [allergene]="getAllergenes()[0]"></app-allergenes-edit-form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <!-- title -->
+        <div class="row">
+          <div class="col">
+            <h4 class="card-title">Catégories de recette</h4>
+          </div>
+          <div class="col">
+            <div class="text-right">
+              <div class="btn btn-sm btn-success" (click)="addRecipeCategory(addRecipeCategoryForm)">Ajouter</div>
+              <app-recipe-categories-create-form #addRecipeCategoryForm></app-recipe-categories-create-form>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="card-subtitle">Liste de toutes les catégories de recette</h5>
+
+        <!-- title -->
+        <app-recipe-categories-table [recipeCategories]="getRecipeCategories()"></app-recipe-categories-table>
       </div>
     </div>
 
@@ -36,7 +57,8 @@
           </div>
           <div class="col">
             <div class="text-right">
-              <div class="btn btn-sm btn-success">Ajouter</div>
+              <div class="btn btn-sm btn-success" (click)="addRecipe(addRecipeForm)">Ajouter</div>
+              <app-recipes-create-form #addRecipeForm></app-recipes-create-form>
             </div>
           </div>
         </div>
@@ -44,7 +66,6 @@
 
         <!-- title -->
         <app-recipes-table [recipes]="getRecipes()"></app-recipes-table>
-        <app-allergenes-edit-form *ngIf="getAllergenes().length > 0" [allergene]="getAllergenes()[0]"></app-allergenes-edit-form>
       </div>
     </div>
   </div>

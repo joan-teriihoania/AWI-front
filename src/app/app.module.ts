@@ -38,6 +38,8 @@ import { AccountResetPageComponent } from './shared/components/account-reset-pag
 import { RecipeCategoriesTableComponent } from './shared/components/recipe-categories-table/recipe-categories-table.component';
 import { RecipeCategoriesCreateFormComponent } from './shared/components/recipe-categories-create-form/recipe-categories-create-form.component';
 import { RecipeCategoriesEditFormComponent } from './shared/components/recipe-categories-edit-form/recipe-categories-edit-form.component';
+import { IngredientsEditFormComponent } from './shared/components/ingredients-edit-form/ingredients-edit-form.component';
+import { IngredientsCreateFormComponent } from './shared/components/ingredients-create-form/ingredients-create-form.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,

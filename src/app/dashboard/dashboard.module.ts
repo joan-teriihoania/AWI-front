@@ -23,6 +23,8 @@ import {
   RecipeCategoriesCreateFormComponent
 } from "../shared/components/recipe-categories-create-form/recipe-categories-create-form.component";
 import {RecipeCategoriesTableComponent} from "../shared/components/recipe-categories-table/recipe-categories-table.component";
+import { IngredientsEditFormComponent } from "../shared/components/ingredients-edit-form/ingredients-edit-form.component";
+import {IngredientsCreateFormComponent}from "../shared/components/ingredients-create-form/ingredients-create-form.component";
 
 const routes: Routes = [
   {
@@ -53,6 +55,8 @@ const routes: Routes = [
     BlogCardsComponent,
     AllergenesTableComponent,
     AllergenesEditFormComponent,
+    IngredientsCreateFormComponent,
+    IngredientsEditFormComponent,
     IngredientsTableComponent,
     IngredientsCategoryTableComponent,
     AllergenesCreateFormComponent,

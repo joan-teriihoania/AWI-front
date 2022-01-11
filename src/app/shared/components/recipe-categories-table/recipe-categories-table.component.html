@@ -1,0 +1,32 @@
+<!-- title -->
+<div class="table-responsive">
+  <table datatable [dtOptions]="dtOptions" class="table align-middle" *ngIf="recipeCategories.length > 0; else noRecipeCategories">
+    <thead>
+    <tr>
+      <th class="text-dark font-medium fs-4">#</th>
+      <th class="text-dark font-medium fs-4">Nom</th>
+      <th class="text-dark font-medium fs-4">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor='let recipeCategory of recipeCategories'>
+      <td>
+        <p class="mb-0 fw-normal">{{recipeCategory.recipe_category_id}}</p>
+      </td>
+      <td>
+        <p class="mb-0 fw-normal">{{recipeCategory.name}}</p>
+      </td>
+      <td>
+        <div class="btn-group" role="group">
+          <div class="btn btn-sm btn-info" (click)="editFormClicked(component)">Modifier</div>
+          <div class="btn btn-sm btn-danger" (click)="deleteClicked(recipeCategory)">Supprimer</div>
+        </div>
+        <app-recipe-categories-edit-form [recipeCategory]="recipeCategory" #component></app-recipe-categories-edit-form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noRecipeCategories>
+  <div class="w-100 text-center">Il n'y a pas de catégorie de recette</div>
+</ng-template>

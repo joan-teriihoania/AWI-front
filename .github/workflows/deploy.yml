@@ -35,7 +35,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           mkdir public
           cp -r dist/xtreme-admin-angular public
-          rm -rf !("dokku"|"dist"|".git")
+          rm -rf !("dokku"|"dist"|".git"|"public")
           mv dokku/* .
           mv dist/xtreme-admin-angular/* public
           git add .

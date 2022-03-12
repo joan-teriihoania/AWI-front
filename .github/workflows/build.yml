@@ -33,6 +33,6 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/AWI-front/*"
+          artifacts: "dist/*"
           token: ${{ secrets.TOKEN }}
           tag: "latest"

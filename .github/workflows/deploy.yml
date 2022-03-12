@@ -35,8 +35,11 @@ jobs:
           git config --local user.name "github-actions[bot]"
           mkdir public
           cp -r dist/xtreme-admin-angular public
+          
+          rm -rf dist
+          rm -f ./*
+          
           mv dokku/* .
-          mv dist/xtreme-admin-angular/* public
           git add .
           git commit -m "Setting up production environment"
           

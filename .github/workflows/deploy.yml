@@ -45,3 +45,4 @@ jobs:
         with:
           git_remote_url: 'ssh://dokku@cluster-ig4.igpolytech.fr/cuisinedu-front'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          git_push_flags: '--force'

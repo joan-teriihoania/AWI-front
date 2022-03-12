@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
   push:
-    branches:
-    - main
+    tags:
+    - '*'
 
 name: Build Angular
 jobs:
@@ -33,7 +33,5 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          allowUpdates: true
           artifacts: "dist/*"
           token: ${{ secrets.TOKEN }}
-          tag: "latest"

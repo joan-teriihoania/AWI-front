@@ -39,11 +39,13 @@ jobs:
           rm -rf dist
           rm -f *.json
           rm -f *.js
-          rm -f .gitignore
           
           mv dokku/* .
           ls -l
           git status
+          cat package.json
+          cat index.js
+          
           git add .
           git commit -m "Setting up production environment"
           

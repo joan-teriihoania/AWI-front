@@ -35,6 +35,6 @@ jobs:
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/*"
+          artifacts: "dist/xtreme-admin-angular/*"
           token: ${{ secrets.TOKEN }}
           tag: ${{ github.event.inputs.tag }}

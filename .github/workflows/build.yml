@@ -32,7 +32,7 @@ jobs:
         run: |
           npm i
           npm run build
-          tar -czvf dist build-${{ github.event.inputs.tag }}.tar.gz
+          tar -czvf build-${{ github.event.inputs.tag }}.tar.gz dist
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:

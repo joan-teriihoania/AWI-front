@@ -5,9 +5,6 @@ on:
         description: 'Release tag version'
         required: true
         type: text
-  push:
-    tags:
-    - 'v*'
 
 name: Build Angular
 jobs:
@@ -40,3 +37,4 @@ jobs:
         with:
           artifacts: "dist/*"
           token: ${{ secrets.TOKEN }}
+          tag: ${{ github.event.inputs.tag }}

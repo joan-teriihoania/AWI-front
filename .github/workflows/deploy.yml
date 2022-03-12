@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+     - main
+
+name: Build Angular
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and npm run build
+        run: |
+          npm i
+          npm run build
+      - name: Preparing production environment
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          mkdir public
+          cp -r dist/xtreme-admin-angular public
+          rm -rf !("dokku"|"dist"|".git")
+          mv dokku/* .
+          mv dist/xtreme-admin-angular/* public
+          git add .
+          git commit -m "Setting up production environment"
+          
+      - name: Push to dokku
+        uses: dokku/github-action@master
+        with:
+          git_remote_url: 'ssh://dokku@cluster-ig4.igpolytech.fr/cuisinedu-front'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}

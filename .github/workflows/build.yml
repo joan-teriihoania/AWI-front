@@ -35,3 +35,4 @@ jobs:
         with:
           artifacts: "dist/AWI-front/*"
           token: ${{ secrets.TOKEN }}
+          tag: "latest"

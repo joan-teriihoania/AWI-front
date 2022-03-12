@@ -3,7 +3,7 @@ on:
     branches:
      - main
 
-name: Build Angular
+name: Deploy
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,12 +37,13 @@ jobs:
           cp -r dist/xtreme-admin-angular public
           
           rm -rf dist
-          rm *.json
-          rm *.js
-          rm .gitignore
+          rm -f *.json
+          rm -f *.js
+          rm -f .gitignore
           
           mv dokku/* .
           ls -l
+          git status
           git add .
           git commit -m "Setting up production environment"
           

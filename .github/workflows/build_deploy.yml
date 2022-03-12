@@ -1,40 +1,39 @@
+name: Build and deploy
+
 on:
   push:
     branches:
-     - main
+      - 'main'
 
-name: Deploy
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-      - uses: actions/checkout@v1
-
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Node ${{ matrix.node-version }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install and npm run build
-        run: |
-          npm i
-          npm run build
+          node-version: '12.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm run test
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist
           path: dist
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_coverage
+          path: coverage
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -45,24 +44,9 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: deploy_dist
-      - name: Preparing production environment
-        if: success()
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          mkdir public
-          cp -r dist/xtreme-admin-angular/* public
-          
-          rm -rf dist
-          rm -f *.json
-          rm -f *.js
-          
-          mv dokku/* .
-          git add .
-          git commit -m "Setting up production environment"
-      - name: Push to dokku
-        uses: dokku/github-action@master
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          git_remote_url: 'ssh://dokku@cluster-ig4.igpolytech.fr/cuisinedu-front'
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          git_push_flags: '--force'
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: deploy_dist/xtreme-admin-angular

@@ -1,7 +1,8 @@
 on:
+  workflow_dispatch:
   push:
-    tags:
-    - v1.**
+    branches:
+    - main
 
 name: Build Angular
 jobs:

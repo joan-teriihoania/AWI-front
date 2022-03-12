@@ -37,9 +37,12 @@ jobs:
           cp -r dist/xtreme-admin-angular public
           
           rm -rf dist
-          find . -maxdepth 1 -type f -delete
+          rm *.json
+          rm *.js
+          rm .gitignore
           
           mv dokku/* .
+          ls -l
           git add .
           git commit -m "Setting up production environment"
           

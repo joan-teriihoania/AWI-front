@@ -32,9 +32,10 @@ jobs:
         run: |
           npm i
           npm run build
+          tar -czvf dist build-${{ github.event.inputs.tag }}.tar.gz
       - name: Push Build to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/xtreme-admin-angular/*"
+          artifacts: "build-${{ github.event.inputs.tag }}.tar.gz"
           token: ${{ secrets.TOKEN }}
           tag: ${{ github.event.inputs.tag }}
